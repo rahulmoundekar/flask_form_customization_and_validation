@@ -1,0 +1,45 @@
+<head>
+    {% block styles %}
+        <!-- Bootstrap CSS -->
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <!-- Optional JavaScript -->
+   {% block scripts %}
+        <!-- Optional JavaScript -->
+        {{ bootstrap.load_js() }}
+    {% endblock %}
+
+</head>
+
+<div id="content">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <h1 class="h3 mb-2 text-gray-800">File Uploading Management System</h1>
+    </nav>
+    <!-- End of Topbar -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body">
+                    <form action="/" method="POST" enctype="multipart/form-data">
+                        {% from 'bootstrap/form.html' import render_field %}
+                            {% from 'bootstrap/utils.html' import render_messages %}
+
+                        {{ render_messages() }}
+                        {{ form.csrf_token() }}
+                        {{ render_field(form.name) }}
+                        {{ render_field(form.password) }}
+                        {{ render_field(form.email) }}
+                        {{ render_field(form.mobile) }}
+                        {{ render_field(form.age) }}
+                        {{ render_field(form.date_of_birth) }}
+                        {{ render_field(form.gender) }}
+                        {{ render_field(form.course) }}
+
+                        <button type="submit" class="btn btn-success btn-block"> Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
